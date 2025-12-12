@@ -226,3 +226,87 @@ void search_by_mail(AddressBook *addressBook)
     printf("---> Invalid Email❎❎ <---\n---> Entered Email not Found <---\n");
 }
 
+void sort_criteria(AddressBook *addressBook)
+{
+    printf("Enter the type of sort:\n");
+    printf("1. Sort by Name.\n2. Sort by Mobile Number\n3. Sort by Mail\n");
+    int choice =0;
+    printf("Enter the Choice:");
+    scanf("%d",&choice);
+    switch (choice)
+    {
+    case 1:
+    {
+        for(int i=0;i<addressBook -> contactCount - 1;i++)
+        {
+            for(int j=0;j<addressBook -> contactCount - 1 -i;j++)
+            {
+                if(strcmp(addressBook -> contacts[j].name,addressBook -> contacts[j+1].name) > 0)
+                {
+                    Contact temp;
+                    strcpy(temp.name,addressBook -> contacts[j].name);
+                    strcpy(temp.phone,addressBook -> contacts[j].phone);
+                    strcpy(temp.email,addressBook -> contacts[j].email);
+                    strcpy(addressBook -> contacts[j].name,addressBook -> contacts[j+1].name);
+                    strcpy(addressBook -> contacts[j].phone,addressBook -> contacts[j+1].phone);
+                    strcpy(addressBook -> contacts[j].email,addressBook -> contacts[j+1].email);
+                    strcpy(addressBook -> contacts[j+1].name,temp.name);
+                    strcpy(addressBook -> contacts[j+1].phone,temp.phone);
+                    strcpy(addressBook -> contacts[j+1].email,temp.email);   
+                }
+            }
+        }
+        break;
+    }
+    case 2:
+    {
+        for(int i=0;i<addressBook -> contactCount - 1;i++)
+        {
+            for(int j=0;j<addressBook -> contactCount - 1 -i;j++)
+            {
+                if(strcmp(addressBook -> contacts[j].phone,addressBook -> contacts[j+1].phone) > 0)
+                {
+                    Contact temp;
+                    strcpy(temp.name,addressBook -> contacts[j].name);
+                    strcpy(temp.phone,addressBook -> contacts[j].phone);
+                    strcpy(temp.email,addressBook -> contacts[j].email);
+                    strcpy(addressBook -> contacts[j].name,addressBook -> contacts[j+1].name);
+                    strcpy(addressBook -> contacts[j].phone,addressBook -> contacts[j+1].phone);
+                    strcpy(addressBook -> contacts[j].email,addressBook -> contacts[j+1].email);
+                    strcpy(addressBook -> contacts[j+1].name,temp.name);
+                    strcpy(addressBook -> contacts[j+1].phone,temp.phone);
+                    strcpy(addressBook -> contacts[j+1].email,temp.email);   
+                }
+            }
+        }
+        break;
+    }
+    case 3:
+    {
+        for(int i=0;i<addressBook -> contactCount - 1;i++)
+        {
+            for(int j=0;j<addressBook -> contactCount - 1 -i;j++)
+            {
+                if(strcmp(addressBook -> contacts[j].email,addressBook -> contacts[j+1].email) > 0)
+                {
+                    Contact temp;
+                    strcpy(temp.name,addressBook -> contacts[j].name);
+                    strcpy(temp.phone,addressBook -> contacts[j].phone);
+                    strcpy(temp.email,addressBook -> contacts[j].email);
+                    strcpy(addressBook -> contacts[j].name,addressBook -> contacts[j+1].name);
+                    strcpy(addressBook -> contacts[j].phone,addressBook -> contacts[j+1].phone);
+                    strcpy(addressBook -> contacts[j].email,addressBook -> contacts[j+1].email);
+                    strcpy(addressBook -> contacts[j+1].name,temp.name);
+                    strcpy(addressBook -> contacts[j+1].phone,temp.phone);
+                    strcpy(addressBook -> contacts[j+1].email,temp.email);   
+                }
+            }
+        }
+        break;
+    }
+    default:
+        break;
+    }
+    listContacts(addressBook);
+}
+
