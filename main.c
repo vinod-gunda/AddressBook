@@ -13,8 +13,9 @@ int main() {
         printf("3. Edit contact\n");
         printf("4. Delete contact\n");
         printf("5. List all contacts\n");
-    	printf("6. Save contacts\n");		
-        printf("7. Exit\n");
+    	printf("6. Save contacts\n");	
+        printf("7. Sort Criteria\n");	
+        printf("8. Exit\n");
         printf("Enter your choice: ");
         __fpurge(stdin);
         choice=0;
@@ -36,13 +37,17 @@ int main() {
                 listContacts(&addressBook);
                 break;
             case 6:
-                printf("Saving and Exiting...\n");
+                printf(GREEN"Saving...Saved\n"RESET);
                 saveContactsToFile(&addressBook);
                 break;
+            case 7:
+                printf("Sort Criteria\n");
+                sort_criteria(&addressBook);
+                break;
             default:
-                printf("Invalid choice. Please try again.\n");
+                printf(RED"Invalid choice. Please try again.\n"RESET);
         }
-    } while (choice != 7);
+    } while (choice != 8);
     
        return 0;
 }
