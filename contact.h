@@ -28,6 +28,8 @@ void is_valid_mail(AddressBook *addressbook, char *mail);
 void search_by_name(AddressBook *addressBook);
 void search_by_number(AddressBook *addressBook);
 void search_by_mail(AddressBook *addressBook);
+void sort_criteria(AddressBook *addressBook);
 
 
 #endif
+
